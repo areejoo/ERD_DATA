@@ -509,8 +509,8 @@ const schemaTables = [
         "type": "varchar",
         "examples": [
           "اجازة صحية",
-          "إجازة بدون راتب",
-          "اجازة امومة"
+          "إجازة ساعية",
+          "اجازة امومو "
         ]
       },
       "RequiresDocument": {
@@ -563,25 +563,25 @@ const schemaTables = [
       "Year": {
         "type": "int",
         "examples": [
-          1,
-          2,
-          3
+         2024,
+          2024,
+          2025
         ]
       },
       "TotalAccruedDays": {
         "type": "decimal",
         "examples": [
-          1000.0,
-          1250.5,
-          1500.0
+          21,
+          15,
+          30
         ]
       },
       "UsedDays": {
         "type": "decimal",
         "examples": [
-          1000.0,
-          1250.5,
-          1500.0
+          1,
+          10,
+          30
         ]
       }
     }
@@ -604,7 +604,7 @@ const schemaTables = [
         "examples": [
           1,
           2,
-          3
+          2
         ]
       },
       "Status": {
@@ -642,9 +642,9 @@ const schemaTables = [
       "EndDate": {
         "type": "date",
         "examples": [
-          "2026-01-15",
-          "2026-04-01",
-          "2026-09-20"
+          "2026-01-17",
+          "2026-05-01",
+          "2026-10-20"
         ]
       }
     }
@@ -673,9 +673,9 @@ const schemaTables = [
       "LeaveTypeID": {
         "type": "int",
         "examples": [
-          1,
           2,
-          3
+          2,
+          2
         ]
       },
       "StartTime": {
@@ -689,17 +689,17 @@ const schemaTables = [
       "EndTime": {
         "type": "time",
         "examples": [
-          "08:00",
-          "09:15",
-          "14:30"
+          "09:00",
+          "10:15",
+          "17:30"
         ]
       },
       "IsHourly": {
         "type": "boolean",
         "examples": [
           true,
-          false,
-          true
+          true,
+          false
         ]
       },
       "ScannedDocumentPath": {
@@ -722,7 +722,7 @@ const schemaTables = [
   },
   {
     "name": "SickLeaveRequest",
-    "description": "طلبات الإجازة المرضية وتقاريرها الطبية.",
+    "description": "طلبات الإجازة المرضية/الصحية وتقاريرها الطبية.",
     "hasExamples": true,
     "columns": {
       "ID": {
@@ -769,7 +769,7 @@ const schemaTables = [
   },
   {
     "name": "UnpaidLeaveRequest",
-    "description": "طلبات الإجازة بلا أجر وقرارات الانفكاك والعودة.",
+    "description": "طلبات الإجازة بلا أجر   تكون غير مدفوعة يعني.",
     "hasExamples": true,
     "columns": {
       "ID": {
@@ -849,7 +849,7 @@ const schemaTables = [
         "examples": [
           "تمت الموافقة",
           "تم الرفض",
-          "بانتظار الاستكمال"
+          "تم الرفض"
         ]
       }
     }
@@ -870,9 +870,9 @@ const schemaTables = [
       "Destination": {
         "type": "varchar",
         "examples": [
-          "دمشق",
+          "مديرية البئة",
           "حلب",
-          "حمص"
+          "مجلس حماة"
         ]
       },
       "Subject": {
@@ -894,9 +894,9 @@ const schemaTables = [
       "EndTime": {
         "type": "datetime",
         "examples": [
-          "2026-01-15 08:00",
-          "2026-04-01 09:15",
-          "2026-09-20 14:30"
+          "2026-01-15 10:00",
+          "2026-04-01 10:15",
+          "2026-09-21 14:30"
         ]
       },
       "documntNumber": {
@@ -910,9 +910,9 @@ const schemaTables = [
       "OfficialLetterRef": {
         "type": "varchar",
         "examples": [
-          "LET-101",
-          "LET-102",
-          "LET-103"
+          "",
+          "",
+          ""
         ]
       },
       "DecisionUrl": {
@@ -989,14 +989,14 @@ const schemaTables = [
         "type": "int",
         "examples": [
           1,
-          2,
-          3
+          1,
+          1
         ]
       },
       "AssignedToID": {
         "type": "int",
         "examples": [
-          1,
+          2,
           2,
           3
         ]
@@ -1021,7 +1021,7 @@ const schemaTables = [
         "type": "date",
         "examples": [
           "2026-01-15",
-          "2026-04-01",
+          "2026-5-01",
           "2026-09-20"
         ]
       }
@@ -1106,9 +1106,9 @@ const schemaTables = [
       "Category": {
         "type": "varchar",
         "examples": [
-          "إداري",
-          "مالي",
-          "وظيفي"
+          "",
+          "",
+          ""
         ]
       },
       "Description": {
@@ -1146,9 +1146,10 @@ const schemaTables = [
       "CurrentStatus": {
         "type": "varchar",
         "examples": [
-          "قيمة 1",
-          "قيمة 2",
-          "قيمة 3"
+            
+            "",
+             "",
+              "",
         ]
       },
       "EffectiveDate": {
@@ -1193,17 +1194,17 @@ const schemaTables = [
       "NewSalary": {
         "type": "decimal",
         "examples": [
-          1000.0,
-          1250.5,
-          1500.0
+          1500.0,
+          1300.5,
+          2500.0
         ]
       },
       "AppliedPercentage": {
         "type": "decimal",
         "examples": [
-          1000.0,
-          1250.5,
-          1500.0
+        0.05,
+          0.05,
+          0.10
         ]
       },
       "IsCapped": {
@@ -1249,16 +1250,16 @@ const schemaTables = [
       "PeriodicIncrementAmount": {
         "type": "decimal",
         "examples": [
-          1000.0,
-          1250.5,
-          1500.0
+          0.05,
+            0.05,
+            0.05,
         ]
       }
     }
   },
   {
     "name": "AdministrativeRequest",
-    "description": "طلبات إدارية مرتبطة بتغيير حالة الموظف.",
+    "description": "طلبات إدارية مرتبطة بتغيير حالة الموظف. كنقله او ندبه او  كف يده",
     "hasExamples": true,
     "columns": {
       "ID": {
@@ -1280,25 +1281,25 @@ const schemaTables = [
       "type": {
         "type": "varchar",
         "examples": [
-          "إداري",
-          "مالي",
-          "وظيفي"
+          "نقل",
+          "ندب",
+          "كف يد"
         ]
       },
       "PreviousStatus": {
         "type": "varchar",
         "examples": [
-          "قيمة 1",
-          "قيمة 2",
-          "قيمة 3"
+          "اججازة",
+    "نشط",
+          "نشط"
         ]
       },
       "CurrentStatus": {
         "type": "varchar",
         "examples": [
-          "قيمة 1",
-          "قيمة 2",
-          "قيمة 3"
+    "منفك",
+          "مندوب",
+          "كف يد"
         ]
       },
       "EffectiveDate": {
@@ -1335,9 +1336,9 @@ const schemaTables = [
       "Type": {
         "type": "varchar",
         "examples": [
-          "إداري",
-          "مالي",
-          "وظيفي"
+          "انذار",
+          "خصم",
+          "خصم"
         ]
       },
       "Category": {
@@ -1345,7 +1346,7 @@ const schemaTables = [
         "examples": [
           "إداري",
           "مالي",
-          "وظيفي"
+          "مالي"
         ]
       },
       "DateIssued": {
@@ -1359,9 +1360,9 @@ const schemaTables = [
       "Reason": {
         "type": "text",
         "examples": [
-          "الأداء المتميز",
-          "مخالفة إدارية",
-          "حاجة العمل"
+"تاخير",
+          "تاخير",
+          " غياب من دون سبب"
         ]
       },
       "Description": {
@@ -1375,8 +1376,8 @@ const schemaTables = [
       "Amount": {
         "type": "decimal",
         "examples": [
-          1000.0,
-          1250.5,
+          0,
+          0,
           1500.0
         ]
       },
@@ -1391,7 +1392,7 @@ const schemaTables = [
       "IsPostedToPayroll": {
         "type": "boolean",
         "examples": [
-          true,
+          false,
           false,
           true
         ]
@@ -1407,7 +1408,7 @@ const schemaTables = [
       "ImpactsPromotion": {
         "type": "boolean",
         "examples": [
-          true,
+          false,
           false,
           true
         ]
@@ -1455,8 +1456,8 @@ const schemaTables = [
         "type": "text",
         "examples": [
           "الأداء المتميز",
-          "مخالفة إدارية",
-          "حاجة العمل"
+    "نشاط كتير",
+          "بدل عن ساعات متاخرة من العمل "
         ]
       },
       "DateAwarded": {
@@ -1501,9 +1502,9 @@ const schemaTables = [
       "Type": {
         "type": "varchar",
         "examples": [
-          "إداري",
-          "مالي",
-          "وظيفي"
+          "",
+          "",
+          ""
         ]
       },
       "CoverageType": {
@@ -1541,9 +1542,9 @@ const schemaTables = [
       "EndDate": {
         "type": "date",
         "examples": [
-          "2026-01-15",
-          "2026-04-01",
-          "2026-09-20"
+          "2028-01-15",
+          "2028-04-01",
+          "2028-09-20"
         ]
       },
       "IsActive": {
@@ -1565,17 +1566,17 @@ const schemaTables = [
       "EmployeeSharePercent": {
         "type": "decimal",
         "examples": [
-          1000.0,
-          1250.5,
-          1500.0
+          0.10,
+          0.10,
+          0.10
         ]
       },
       "EmployeeDeduction": {
         "type": "decimal",
         "examples": [
-          1000.0,
-          1250.5,
-          1500.0
+          0.90,
+          0.90,
+          0.90
         ]
       }
     }
@@ -1620,9 +1621,9 @@ const schemaTables = [
       "DurationMonths": {
         "type": "int",
         "examples": [
-          1,
-          2,
-          3
+          11,
+          22,
+          33
         ]
       },
       "MonthlySalary": {
@@ -1637,8 +1638,8 @@ const schemaTables = [
         "type": "decimal",
         "examples": [
           1000.0,
-          1250.5,
-          1500.0
+          1000.5,
+          1000.0
         ]
       },
       "EffectiveDate": {
@@ -1651,125 +1652,125 @@ const schemaTables = [
       }
     }
   },
-  {
-    "name": "InsuranceLiquidation",
-    "description": "تصفية التأمين والمستحقات عند انتهاء الخدمة.",
-    "hasExamples": true,
-    "columns": {
-      "ID": {
-        "type": "int",
-        "examples": [
-          1,
-          2,
-          3
-        ]
-      },
-      "EmployeeID": {
-        "type": "int",
-        "examples": [
-          1,
-          2,
-          3
-        ]
-      },
-      "Title": {
-        "type": "varchar",
-        "examples": [
-          "متابعة معاملات الموظفين",
-          "تدقيق بيانات الحضور",
-          "إعداد تقرير شهري"
-        ]
-      },
-      "EmployeeName": {
-        "type": "varchar",
-        "examples": [
-          "قيمة 1",
-          "قيمة 2",
-          "قيمة 3"
-        ]
-      },
-      "InsuranceNumber": {
-        "type": "varchar",
-        "examples": [
-          "INS-1001",
-          "INS-1002",
-          "INS-1003"
-        ]
-      },
-      "InsuranceLetterNumber": {
-        "type": "varchar",
-        "examples": [
-          "LET-INS-01",
-          "LET-INS-02",
-          "LET-INS-03"
-        ]
-      },
-      "LetterDate": {
-        "type": "date",
-        "examples": [
-          "2026-01-15",
-          "2026-04-01",
-          "2026-09-20"
-        ]
-      },
-      "Status": {
-        "type": "varchar",
-        "examples": [
-          "مسودة",
-          "قيد الإجراء",
-          "معتمد"
-        ]
-      },
-      "TerminationReason": {
-        "type": "varchar",
-        "examples": [
-          "تقاعد",
-          "استقالة",
-          "انتهاء عقد"
-        ]
-      },
-      "FinalResult": {
-        "type": "text",
-        "examples": [
-          "مستحقات مكتملة",
-          "قيد التصفية",
-          "لا توجد مستحقات"
-        ]
-      },
-      "TotalAmount": {
-        "type": "decimal",
-        "examples": [
-          1000.0,
-          1250.5,
-          1500.0
-        ]
-      },
-      "DecisionNumber": {
-        "type": "varchar",
-        "examples": [
-          "DEC-2026-001",
-          "DEC-2026-002",
-          "DEC-2026-003"
-        ]
-      },
-      "DecisionDate": {
-        "type": "date",
-        "examples": [
-          "2026-01-15",
-          "2026-04-01",
-          "2026-09-20"
-        ]
-      },
-      "DecisionUrl": {
-        "type": "varchar",
-        "examples": [
-          "/docs/decision-001.pdf",
-          "/docs/decision-002.pdf",
-          "/docs/decision-003.pdf"
-        ]
-      }
-    }
-  },
+  
+//     "name": "InsuranceLiquidation",
+//     "description": "تصفية التأمين والمستحقات عند انتهاء الخدمة.",
+//     "hasExamples": true,
+//     "columns": {
+//       "ID": {
+//         "type": "int",
+//         "examples": [
+//           1,
+//           2,
+//           3
+//         ]
+//       },
+//       "EmployeeID": {
+//         "type": "int",
+//         "examples": [
+//           1,
+//           2,
+//           3
+//         ]
+//       },
+//       "Title": {
+//         "type": "varchar",
+//         "examples": [
+//           "متابعة معاملات الموظفين",
+//           "تدقيق بيانات الحضور",
+//           "إعداد تقرير شهري"
+//         ]
+//       },
+//       "EmployeeName": {
+//         "type": "varchar",
+//         "examples": [
+//           "قيمة 1",
+//           "قيمة 2",
+//           "قيمة 3"
+//         ]
+//       },
+//       "InsuranceNumber": {
+//         "type": "varchar",
+//         "examples": [
+//           "INS-1001",
+//           "INS-1002",
+//           "INS-1003"
+//         ]
+//       },
+//       "InsuranceLetterNumber": {
+//         "type": "varchar",
+//         "examples": [
+//           "LET-INS-01",
+//           "LET-INS-02",
+//           "LET-INS-03"
+//         ]
+//       },
+//       "LetterDate": {
+//         "type": "date",
+//         "examples": [
+//           "2026-01-15",
+//           "2026-04-01",
+//           "2026-09-20"
+//         ]
+//       },
+//       "Status": {
+//         "type": "varchar",
+//         "examples": [
+//           "مسودة",
+//           "قيد الإجراء",
+//           "معتمد"
+//         ]
+//       },
+//       "TerminationReason": {
+//         "type": "varchar",
+//         "examples": [
+//           "تقاعد",
+//           "استقالة",
+//           "انتهاء عقد"
+//         ]
+//       },
+//       "FinalResult": {
+//         "type": "text",
+//         "examples": [
+//           "مستحقات مكتملة",
+//           "قيد التصفية",
+//           "لا توجد مستحقات"
+//         ]
+//       },
+//       "TotalAmount": {
+//         "type": "decimal",
+//         "examples": [
+//           1000.0,
+//           1250.5,
+//           1500.0
+//         ]
+//       },
+//       "DecisionNumber": {
+//         "type": "varchar",
+//         "examples": [
+//           "DEC-2026-001",
+//           "DEC-2026-002",
+//           "DEC-2026-003"
+//         ]
+//       },
+//       "DecisionDate": {
+//         "type": "date",
+//         "examples": [
+//           "2026-01-15",
+//           "2026-04-01",
+//           "2026-09-20"
+//         ]
+//       },
+//       "DecisionUrl": {
+//         "type": "varchar",
+//         "examples": [
+//           "/docs/decision-001.pdf",
+//           "/docs/decision-002.pdf",
+//           "/docs/decision-003.pdf"
+//         ]
+//       }
+//     }
+//   },
   {
     "name": "LiquidationLeaveStats",
     "description": "ملخص أرصدة وأيام الإجازات ضمن التصفية.",
@@ -1858,7 +1859,7 @@ const schemaTables = [
   },
   {
     "name": "Asset",
-    "description": "العهد والأصول المسندة للموظف.",
+    "description": " العهد والأصول المسندة للموظف سنتحدث  عنه في نظام المستودعات",
     "hasExamples": true,
     "columns": {
       "ID": {
@@ -1966,9 +1967,9 @@ const schemaTables = [
       "Subject": {
         "type": "varchar",
         "examples": [
-          "اجتماع تنسيقي",
-          "مهمة تفتيش",
-          "متابعة مشروع"
+          "قرار نقل ",
+          "قرار ندب ",
+          "قرار خصم "
         ]
       },
       "Content": {
@@ -2021,17 +2022,17 @@ const schemaTables = [
       "Name": {
         "type": "varchar",
         "examples": [
-          "نشط",
-          "إجازة بدون راتب",
-          "مستقيل"
+          "مديرية",
+          "",
+          ""
         ]
       },
       "Category": {
         "type": "varchar",
         "examples": [
-          "إداري",
-          "مالي",
-          "وظيفي"
+          "",
+          "",
+          ""
         ]
       },
       "ContactPerson": {
@@ -2053,17 +2054,17 @@ const schemaTables = [
       "PhoneNumber": {
         "type": "varchar",
         "examples": [
-          "0115551001",
-          "0115551002",
-          "0115551003"
+          "0940525252",
+          "0943825498",
+          "0943859798"
         ]
       },
       "Address": {
         "type": "text",
         "examples": [
-          "دمشق",
-          "حلب",
-          "اللاذقية"
+          "حماة حماة",
+          "حماة حي الاندبس",
+          "حماة العاصي"
         ]
       },
       "IsActive": {
@@ -2101,8 +2102,8 @@ const schemaTables = [
         "type": "varchar",
         "examples": [
           "إداري",
-          "مالي",
-          "وظيفي"
+          "",
+          ""
         ]
       },
       "CorrespondenceDate": {
@@ -2124,9 +2125,9 @@ const schemaTables = [
       "Subject": {
         "type": "varchar",
         "examples": [
-          "اجتماع تنسيقي",
-          "مهمة تفتيش",
-          "متابعة مشروع"
+          " ",
+          " ",
+          " "
         ]
       },
       "Content": {
