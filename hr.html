@@ -1,0 +1,2303 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HR Database Schema Examples</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f4f6f8;color:#17202a;font-family:Tahoma,Arial,sans-serif}
+.container{max-width:1600px;margin:auto;padding:32px}
+.hero{background:#fff;border:1px solid #e3e7eb;border-radius:16px;padding:24px 28px;margin-bottom:24px}
+.hero h1{margin:0 0 10px;font-size:28px}
+.hero p{margin:5px 0;color:#5f6873;line-height:1.8}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(560px,1fr));gap:20px;align-items:start}
+.card{background:#fff;border:1px solid #dde2e7;border-radius:14px;overflow:hidden}
+.card-head{padding:18px 20px;border-bottom:1px solid #e8ebee}
+.card-head h2{direction:ltr;text-align:left;margin:0 0 7px;font-size:19px}
+.card-head p{margin:0;color:#66717c;font-size:13px;line-height:1.7}
+.table-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;direction:ltr;text-align:left;font-size:12px}
+th,td{padding:10px 12px;border-bottom:1px solid #edf0f2;white-space:nowrap;vertical-align:top}
+th{background:#f8f9fa;font-weight:700}
+.field{font-weight:700;background:#fbfcfd}
+.type{color:#68727d}
+.empty{padding:20px;color:#777;font-size:13px}
+.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:#f0f2f4;color:#555;font-size:11px;margin-top:10px}
+@media(max-width:700px){.container{padding:14px}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+<header class="hero">
+  <h1>أمثلة بيانات مخطط الموارد البشرية</h1>
+  <p>البيانات موجودة داخل مصفوفة JavaScript واحدة ويتم توليد جميع الجداول تلقائياً منها.</p>
+  <p>تم اعتبار كل حقل <b>ID / ...ID</b> من نوع <b>INT</b>. والجداول التي لا تحتوي حقولاً فعلية غير ID لا تعرض بيانات تجريبية.</p>
+</header>
+
+<main id="tablesGrid" class="grid"></main>
+</div>
+
+<script>
+const schemaTables = [
+  {
+    "name": "org_units",
+    "description": "الوحدات التنظيمية. المخطط الحالي لا يعرّف حقولاً تفصيلية لها غير المعرّف.",
+    "hasExamples": false,
+    "columns": {}
+  },
+  {
+    "name": "job_cards",
+    "description": "البطاقات الوظيفية. المخطط الحالي لا يعرّف حقولاً تفصيلية لها غير المعرّف.",
+    "hasExamples": false,
+    "columns": {}
+  },
+  {
+    "name": "Grades",
+    "description": "الفئات أو الدرجات الوظيفية. المخطط الحالي لا يعرّف حقولاً تفصيلية لها غير المعرّف.",
+    "hasExamples": false,
+    "columns": {}
+  },
+  {
+    "name": "vacancies",
+    "description": "الشواغر الوظيفية. المخطط الحالي لا يعرّف حقولاً تفصيلية لها غير المعرّف.",
+    "hasExamples": false,
+    "columns": {}
+  },
+  {
+    "name": "attachments",
+    "description": "المرفقات. المخطط الحالي لا يعرّف حقولاً تفصيلية لها غير المعرّف.",
+    "hasExamples": false,
+    "columns": {}
+  },
+  {
+    "name": "Employee",
+    "description": "السجل الرئيسي للموظف وبياناته الشخصية والوظيفية.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "EmployeeNumber": {
+        "type": "varchar",
+        "examples": [
+          "EMP-1001",
+          "EMP-1002",
+          "EMP-1003"
+        ]
+      },
+      "NationalId": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "PassportNumber": {
+        "type": "varchar",
+        "examples": [
+          "P1002456",
+          "P1002457",
+          "P1002458"
+        ]
+      },
+      "FirstName": {
+        "type": "varchar",
+        "examples": [
+          "أحمد",
+          "ليلى",
+          "سامي"
+        ]
+      },
+      "MiddleName": {
+        "type": "varchar",
+        "examples": [
+          "محمد",
+          "خالد",
+          "حسن"
+        ]
+      },
+      "LastName": {
+        "type": "varchar",
+        "examples": [
+          "العلي",
+          "حمدان",
+          "سليمان"
+        ]
+      },
+      "FullName": {
+        "type": "varchar",
+        "examples": [
+          "أحمد محمد العلي",
+          "ليلى خالد حمدان",
+          "سامي حسن سليمان"
+        ]
+      },
+      "Gender": {
+        "type": "varchar",
+        "examples": [
+          "ذكر",
+          "أنثى",
+          "ذكر"
+        ]
+      },
+      "MaritalStatusId": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "NationalityId": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "BirthDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "HireDate": {
+        "type": "date014",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "EmploymentStatusId": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "CurrentVacancynId": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "CurrentGradeId": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "Current_org_unit_Id": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "WorkEmail": {
+        "type": "varchar",
+        "examples": [
+          "ahmad@org.gov",
+          "laila@org.gov",
+          "sami@org.gov"
+        ]
+      },
+      "WorkPhone": {
+        "type": "varchar",
+        "examples": [
+          "011-5551001",
+          "011-5551002",
+          "011-5551003"
+        ]
+      },
+      "PhotoAttachmentId": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "IsActive": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "CreatedAt": {
+        "type": "timestamp",
+        "examples": [
+          "2026-01-15 08:00",
+          "2026-04-01 09:15",
+          "2026-09-20 14:30"
+        ]
+      },
+      "UpdatedAt": {
+        "type": "timestamp",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "DeletedAt": {
+        "type": "timestamp",
+        "examples": [
+          "2026-01-15 08:00",
+          "2026-04-01 09:15",
+          "2026-09-20 14:30"
+        ]
+      }
+    }
+  },
+  {
+    "name": "EmploymentStatus",
+    "description": "حالات الموظف وإعدادات تأثير كل حالة على الرواتب والصلاحيات والخدمة.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "Name": {
+        "type": "varchar",
+        "examples": [
+          "نشط",
+          "إجازة بدون راتب",
+          "مستقيل"
+        ]
+      },
+      "Code": {
+        "type": "varchar",
+        "examples": [
+          "ACTIVE",
+          "ON_LEAVE",
+          "RESIGNED"
+        ]
+      },
+      "StopsPayroll": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "RevokesSystemAccess": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "RequiresLiquidation": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "CountsInServicePeriod": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "IsActive": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      }
+    }
+  },
+  {
+    "name": "DailyAttendance",
+    "description": "الحضور اليومي للموظفين وأوقات الدوام والتأخير.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "EmployeeID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "Date": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "StartTime": {
+        "type": "time",
+        "examples": [
+          "08:00",
+          "09:15",
+          "14:30"
+        ]
+      },
+      "EndTime": {
+        "type": "time",
+        "examples": [
+          "08:00",
+          "09:15",
+          "14:30"
+        ]
+      },
+      "IsLate": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "IsExcused": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "IsManualEntry": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "DeductionID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      }
+    }
+  },
+  {
+    "name": "AbsenceDecision",
+    "description": "قرارات الغياب وعدد الأيام وما إذا كانت محسومة من الراتب.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "EmployeeID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "DecisionNumber": {
+        "type": "varchar",
+        "examples": [
+          "DEC-2026-001",
+          "DEC-2026-002",
+          "DEC-2026-003"
+        ]
+      },
+      "DecisionDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "month": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "year": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "Days": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "TotalAbsenceDays": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "IsDeductedFromSalary": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "IsConvertedToDay": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "DecisionURL": {
+        "type": "varchar",
+        "examples": [
+          "/docs/decision-001.pdf",
+          "/docs/decision-002.pdf",
+          "/docs/decision-003.pdf"
+        ]
+      }
+    }
+  },
+  {
+    "name": "LeaveType",
+    "description": "أنواع الإجازات وخصائصها مثل الأجر واشتراط الوثائق.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "Name": {
+        "type": "varchar",
+        "examples": [
+          "نشط",
+          "إجازة بدون راتب",
+          "مستقيل"
+        ]
+      },
+      "RequiresDocument": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "IsPaid": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      }
+    }
+  },
+  {
+    "name": "LeaveBalance",
+    "description": "رصيد الإجازات السنوي لكل موظف حسب نوع الإجازة.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "EmployeeID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "LeaveTypeID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "Year": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "TotalAccruedDays": {
+        "type": "decimal",
+        "examples": [
+          1000.0,
+          1250.5,
+          1500.0
+        ]
+      },
+      "UsedDays": {
+        "type": "decimal",
+        "examples": [
+          1000.0,
+          1250.5,
+          1500.0
+        ]
+      }
+    }
+  },
+  {
+    "name": "BaseRequest",
+    "description": "الطلب الأساسي المشترك الذي ترتبط به طلبات الإجازات المختلفة.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "EmployeeID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "Status": {
+        "type": "varchar",
+        "examples": [
+          "مسودة",
+          "قيد الإجراء",
+          "معتمد"
+        ]
+      },
+      "CurrentApproverLevel": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "DocumentURl": {
+        "type": "varchar",
+        "examples": [
+          "/docs/request-001.pdf",
+          "/docs/request-002.pdf",
+          "/docs/request-003.pdf"
+        ]
+      },
+      "StartDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "EndDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      }
+    }
+  },
+  {
+    "name": "LeaveRequest",
+    "description": "طلبات الإجازة العادية أو الساعية.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "BaseRequestID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "LeaveTypeID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "StartTime": {
+        "type": "time",
+        "examples": [
+          "08:00",
+          "09:15",
+          "14:30"
+        ]
+      },
+      "EndTime": {
+        "type": "time",
+        "examples": [
+          "08:00",
+          "09:15",
+          "14:30"
+        ]
+      },
+      "IsHourly": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "ScannedDocumentPath": {
+        "type": "varchar",
+        "examples": [
+          "/scans/leave-001.pdf",
+          "/scans/leave-002.pdf",
+          "/scans/leave-003.pdf"
+        ]
+      },
+      "ResultingDecisionID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      }
+    }
+  },
+  {
+    "name": "SickLeaveRequest",
+    "description": "طلبات الإجازة المرضية وتقاريرها الطبية.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "BaseRequestID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "MedicalReportURL": {
+        "type": "varchar",
+        "examples": [
+          "/medical/report-001.pdf",
+          "/medical/report-002.pdf",
+          "/medical/report-003.pdf"
+        ]
+      },
+      "IsMedicalReportVerified": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "DoctorNote": {
+        "type": "text",
+        "examples": [
+          "راحة لمدة 3 أيام",
+          "متابعة طبية",
+          "مراجعة بعد أسبوع"
+        ]
+      }
+    }
+  },
+  {
+    "name": "UnpaidLeaveRequest",
+    "description": "طلبات الإجازة بلا أجر وقرارات الانفكاك والعودة.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "BaseRequestID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "IsTerminationRequired": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "IsReturnRequired": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "ReturnDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "TerminationDecisionID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "ReturnDecisionID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "RelatedEventID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "DecisionNo": {
+        "type": "varchar",
+        "examples": [
+          "UNP-001",
+          "UNP-002",
+          "UNP-003"
+        ]
+      },
+      "FinalDecisionText": {
+        "type": "text",
+        "examples": [
+          "تمت الموافقة",
+          "تم الرفض",
+          "بانتظار الاستكمال"
+        ]
+      }
+    }
+  },
+  {
+    "name": "OfficialMissionOrder",
+    "description": "أوامر المهمات الرسمية مع الوجهة والموضوع والفترة.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "Destination": {
+        "type": "varchar",
+        "examples": [
+          "دمشق",
+          "حلب",
+          "حمص"
+        ]
+      },
+      "Subject": {
+        "type": "varchar",
+        "examples": [
+          "اجتماع تنسيقي",
+          "مهمة تفتيش",
+          "متابعة مشروع"
+        ]
+      },
+      "StartTime": {
+        "type": "datetime",
+        "examples": [
+          "2026-01-15 08:00",
+          "2026-04-01 09:15",
+          "2026-09-20 14:30"
+        ]
+      },
+      "EndTime": {
+        "type": "datetime",
+        "examples": [
+          "2026-01-15 08:00",
+          "2026-04-01 09:15",
+          "2026-09-20 14:30"
+        ]
+      },
+      "documntNumber": {
+        "type": "varchar",
+        "examples": [
+          "MIS-001",
+          "MIS-002",
+          "MIS-003"
+        ]
+      },
+      "OfficialLetterRef": {
+        "type": "varchar",
+        "examples": [
+          "LET-101",
+          "LET-102",
+          "LET-103"
+        ]
+      },
+      "DecisionUrl": {
+        "type": "varchar",
+        "examples": [
+          "/docs/decision-001.pdf",
+          "/docs/decision-002.pdf",
+          "/docs/decision-003.pdf"
+        ]
+      }
+    }
+  },
+  {
+    "name": "MissionParticipant",
+    "description": "الموظفون المشاركون في المهمات الرسمية.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "MissionID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "EmployeeID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "HasJoined": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      }
+    }
+  },
+  {
+    "name": "InternalTask",
+    "description": "المهام الداخلية المسندة بين الموظفين.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "title": {
+        "type": "varchar",
+        "examples": [
+          "متابعة معاملات الموظفين",
+          "تدقيق بيانات الحضور",
+          "إعداد تقرير شهري"
+        ]
+      },
+      "CreatorID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "AssignedToID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "Status": {
+        "type": "varchar",
+        "examples": [
+          "مسودة",
+          "قيد الإجراء",
+          "معتمد"
+        ]
+      },
+      "Priority": {
+        "type": "varchar",
+        "examples": [
+          "عادي",
+          "عاجل",
+          "مرتفع"
+        ]
+      },
+      "DueDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      }
+    }
+  },
+  {
+    "name": "IndividualReport",
+    "description": "تقارير الموظفين المرتبطة بالمهام الداخلية.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "TaskID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "EmployeeID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "content": {
+        "type": "text",
+        "examples": [
+          "محتوى تجريبي أول",
+          "محتوى تجريبي ثان",
+          "محتوى تجريبي ثالث"
+        ]
+      }
+    }
+  },
+  {
+    "name": "EmployeeActionRecord",
+    "description": "سجل الحركات الوظيفية مثل النقل والترفيع والإيقاف.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "EmployeeID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "ActionType": {
+        "type": "varchar",
+        "examples": [
+          "ترفيع",
+          "نقل",
+          "إجازة بلا أجر"
+        ]
+      },
+      "ActionDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "Category": {
+        "type": "varchar",
+        "examples": [
+          "إداري",
+          "مالي",
+          "وظيفي"
+        ]
+      },
+      "Description": {
+        "type": "text",
+        "examples": [
+          "وصف تجريبي أول",
+          "وصف تجريبي ثان",
+          "وصف تجريبي ثالث"
+        ]
+      },
+      "DecisionNumber": {
+        "type": "varchar",
+        "examples": [
+          "DEC-2026-001",
+          "DEC-2026-002",
+          "DEC-2026-003"
+        ]
+      },
+      "DecisionUrl": {
+        "type": "varchar",
+        "examples": [
+          "/docs/decision-001.pdf",
+          "/docs/decision-002.pdf",
+          "/docs/decision-003.pdf"
+        ]
+      },
+      "PreviousStatus": {
+        "type": "varchar",
+        "examples": [
+          "قيمة 1",
+          "قيمة 2",
+          "قيمة 3"
+        ]
+      },
+      "CurrentStatus": {
+        "type": "varchar",
+        "examples": [
+          "قيمة 1",
+          "قيمة 2",
+          "قيمة 3"
+        ]
+      },
+      "EffectiveDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      }
+    }
+  },
+  {
+    "name": "PromotionRecord",
+    "description": "تفاصيل الترفيعات والرواتب قبل وبعد الترفيع.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "EmployeeID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "OldSalary": {
+        "type": "decimal",
+        "examples": [
+          1000.0,
+          1250.5,
+          1500.0
+        ]
+      },
+      "NewSalary": {
+        "type": "decimal",
+        "examples": [
+          1000.0,
+          1250.5,
+          1500.0
+        ]
+      },
+      "AppliedPercentage": {
+        "type": "decimal",
+        "examples": [
+          1000.0,
+          1250.5,
+          1500.0
+        ]
+      },
+      "IsCapped": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "AdjustmentDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "DecreeNumber": {
+        "type": "varchar",
+        "examples": [
+          "DECREE-101",
+          "DECREE-102",
+          "DECREE-103"
+        ]
+      },
+      "CommencementDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "EffectiveDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "PeriodicIncrementAmount": {
+        "type": "decimal",
+        "examples": [
+          1000.0,
+          1250.5,
+          1500.0
+        ]
+      }
+    }
+  },
+  {
+    "name": "AdministrativeRequest",
+    "description": "طلبات إدارية مرتبطة بتغيير حالة الموظف.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "EmployeeID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "type": {
+        "type": "varchar",
+        "examples": [
+          "إداري",
+          "مالي",
+          "وظيفي"
+        ]
+      },
+      "PreviousStatus": {
+        "type": "varchar",
+        "examples": [
+          "قيمة 1",
+          "قيمة 2",
+          "قيمة 3"
+        ]
+      },
+      "CurrentStatus": {
+        "type": "varchar",
+        "examples": [
+          "قيمة 1",
+          "قيمة 2",
+          "قيمة 3"
+        ]
+      },
+      "EffectiveDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      }
+    }
+  },
+  {
+    "name": "DisciplinaryAction",
+    "description": "الجزاءات والعقوبات وتأثيرها المالي والوظيفي.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "EmployeeID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "Type": {
+        "type": "varchar",
+        "examples": [
+          "إداري",
+          "مالي",
+          "وظيفي"
+        ]
+      },
+      "Category": {
+        "type": "varchar",
+        "examples": [
+          "إداري",
+          "مالي",
+          "وظيفي"
+        ]
+      },
+      "DateIssued": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "Reason": {
+        "type": "text",
+        "examples": [
+          "الأداء المتميز",
+          "مخالفة إدارية",
+          "حاجة العمل"
+        ]
+      },
+      "Description": {
+        "type": "text",
+        "examples": [
+          "وصف تجريبي أول",
+          "وصف تجريبي ثان",
+          "وصف تجريبي ثالث"
+        ]
+      },
+      "Amount": {
+        "type": "decimal",
+        "examples": [
+          1000.0,
+          1250.5,
+          1500.0
+        ]
+      },
+      "DecisionNumber": {
+        "type": "varchar",
+        "examples": [
+          "DEC-2026-001",
+          "DEC-2026-002",
+          "DEC-2026-003"
+        ]
+      },
+      "IsPostedToPayroll": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "IsRevoked": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "ImpactsPromotion": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      }
+    }
+  },
+  {
+    "name": "Reward",
+    "description": "المكافآت الممنوحة للموظفين.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "EmployeeID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "Type": {
+        "type": "varchar",
+        "examples": [
+          "إداري",
+          "مالي",
+          "وظيفي"
+        ]
+      },
+      "Amount": {
+        "type": "decimal",
+        "examples": [
+          1000.0,
+          1250.5,
+          1500.0
+        ]
+      },
+      "Reason": {
+        "type": "text",
+        "examples": [
+          "الأداء المتميز",
+          "مخالفة إدارية",
+          "حاجة العمل"
+        ]
+      },
+      "DateAwarded": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "DecisionNumber": {
+        "type": "varchar",
+        "examples": [
+          "DEC-2026-001",
+          "DEC-2026-002",
+          "DEC-2026-003"
+        ]
+      }
+    }
+  },
+  {
+    "name": "InsuranceContract",
+    "description": "عقود التأمين ونسب مساهمة الجهة والموظف.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "EmployeeID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "Type": {
+        "type": "varchar",
+        "examples": [
+          "إداري",
+          "مالي",
+          "وظيفي"
+        ]
+      },
+      "CoverageType": {
+        "type": "varchar",
+        "examples": [
+          "صحي",
+          "حوادث",
+          "شامل"
+        ]
+      },
+      "InsuranceClass": {
+        "type": "varchar",
+        "examples": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "PolicyNumber": {
+        "type": "varchar",
+        "examples": [
+          "POL-1001",
+          "POL-1002",
+          "POL-1003"
+        ]
+      },
+      "StartDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "EndDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "IsActive": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      },
+      "CompanySharePercent": {
+        "type": "decimal",
+        "examples": [
+          1000.0,
+          1250.5,
+          1500.0
+        ]
+      },
+      "EmployeeSharePercent": {
+        "type": "decimal",
+        "examples": [
+          1000.0,
+          1250.5,
+          1500.0
+        ]
+      },
+      "EmployeeDeduction": {
+        "type": "decimal",
+        "examples": [
+          1000.0,
+          1250.5,
+          1500.0
+        ]
+      }
+    }
+  },
+  {
+    "name": "ServiceInclusion",
+    "description": "ضم مدد خدمة سابقة واحتساب الاقتطاعات المرتبطة بها.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "EmployeeID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "StartDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "EndDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "DurationMonths": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "MonthlySalary": {
+        "type": "decimal",
+        "examples": [
+          1000.0,
+          1250.5,
+          1500.0
+        ]
+      },
+      "MonthlyDeductionAmount": {
+        "type": "decimal",
+        "examples": [
+          1000.0,
+          1250.5,
+          1500.0
+        ]
+      },
+      "EffectiveDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      }
+    }
+  },
+  {
+    "name": "InsuranceLiquidation",
+    "description": "تصفية التأمين والمستحقات عند انتهاء الخدمة.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "EmployeeID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "Title": {
+        "type": "varchar",
+        "examples": [
+          "متابعة معاملات الموظفين",
+          "تدقيق بيانات الحضور",
+          "إعداد تقرير شهري"
+        ]
+      },
+      "EmployeeName": {
+        "type": "varchar",
+        "examples": [
+          "قيمة 1",
+          "قيمة 2",
+          "قيمة 3"
+        ]
+      },
+      "InsuranceNumber": {
+        "type": "varchar",
+        "examples": [
+          "INS-1001",
+          "INS-1002",
+          "INS-1003"
+        ]
+      },
+      "InsuranceLetterNumber": {
+        "type": "varchar",
+        "examples": [
+          "LET-INS-01",
+          "LET-INS-02",
+          "LET-INS-03"
+        ]
+      },
+      "LetterDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "Status": {
+        "type": "varchar",
+        "examples": [
+          "مسودة",
+          "قيد الإجراء",
+          "معتمد"
+        ]
+      },
+      "TerminationReason": {
+        "type": "varchar",
+        "examples": [
+          "تقاعد",
+          "استقالة",
+          "انتهاء عقد"
+        ]
+      },
+      "FinalResult": {
+        "type": "text",
+        "examples": [
+          "مستحقات مكتملة",
+          "قيد التصفية",
+          "لا توجد مستحقات"
+        ]
+      },
+      "TotalAmount": {
+        "type": "decimal",
+        "examples": [
+          1000.0,
+          1250.5,
+          1500.0
+        ]
+      },
+      "DecisionNumber": {
+        "type": "varchar",
+        "examples": [
+          "DEC-2026-001",
+          "DEC-2026-002",
+          "DEC-2026-003"
+        ]
+      },
+      "DecisionDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "DecisionUrl": {
+        "type": "varchar",
+        "examples": [
+          "/docs/decision-001.pdf",
+          "/docs/decision-002.pdf",
+          "/docs/decision-003.pdf"
+        ]
+      }
+    }
+  },
+  {
+    "name": "LiquidationLeaveStats",
+    "description": "ملخص أرصدة وأيام الإجازات ضمن التصفية.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "LiquidationID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "AdminGranted": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "AdminBalance": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "SickDays": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "UnpaidDays": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      }
+    }
+  },
+  {
+    "name": "LiquidationSalarySnapshot",
+    "description": "لقطة الراتب الشهري المستخدمة في التصفية.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "LiquidationID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "MonthlySalary": {
+        "type": "decimal",
+        "examples": [
+          1000.0,
+          1250.5,
+          1500.0
+        ]
+      }
+    }
+  },
+  {
+    "name": "Asset",
+    "description": "العهد والأصول المسندة للموظف.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "EmployeeID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      }
+    }
+  },
+  {
+    "name": "DecisionTemplate",
+    "description": "قوالب القرارات الديناميكية وتعريف حقولها بصيغة JSON.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "Name": {
+        "type": "varchar",
+        "examples": [
+          "نشط",
+          "إجازة بدون راتب",
+          "مستقيل"
+        ]
+      },
+      "Description": {
+        "type": "text",
+        "examples": [
+          "وصف تجريبي أول",
+          "وصف تجريبي ثان",
+          "وصف تجريبي ثالث"
+        ]
+      },
+      "IsActive": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      }
+    }
+  },
+  {
+    "name": "BaseDecision",
+    "description": "القرارات المركزية الفعلية المبنية على القوالب.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "TemplateID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "DecisionNumber": {
+        "type": "varchar",
+        "examples": [
+          "DEC-2026-001",
+          "DEC-2026-002",
+          "DEC-2026-003"
+        ]
+      },
+      "DecisionDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "EffectiveDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "Subject": {
+        "type": "varchar",
+        "examples": [
+          "اجتماع تنسيقي",
+          "مهمة تفتيش",
+          "متابعة مشروع"
+        ]
+      },
+      "Content": {
+        "type": "text",
+        "examples": [
+          "محتوى تجريبي أول",
+          "محتوى تجريبي ثان",
+          "محتوى تجريبي ثالث"
+        ]
+      },
+      "DecisionURL": {
+        "type": "varchar",
+        "examples": [
+          "/docs/decision-001.pdf",
+          "/docs/decision-002.pdf",
+          "/docs/decision-003.pdf"
+        ]
+      },
+      "Status": {
+        "type": "varchar",
+        "examples": [
+          "مسودة",
+          "قيد الإجراء",
+          "معتمد"
+        ]
+      },
+      "IssuerID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      }
+    }
+  },
+  {
+    "name": "ExternalParty",
+    "description": "الجهات الخارجية مثل الوزارات والشركات والمؤسسات.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "Name": {
+        "type": "varchar",
+        "examples": [
+          "نشط",
+          "إجازة بدون راتب",
+          "مستقيل"
+        ]
+      },
+      "Category": {
+        "type": "varchar",
+        "examples": [
+          "إداري",
+          "مالي",
+          "وظيفي"
+        ]
+      },
+      "ContactPerson": {
+        "type": "varchar",
+        "examples": [
+          "محمد أحمد",
+          "سارة علي",
+          "خالد يوسف"
+        ]
+      },
+      "Email": {
+        "type": "varchar",
+        "examples": [
+          "contact1@example.com",
+          "contact2@example.com",
+          "contact3@example.com"
+        ]
+      },
+      "PhoneNumber": {
+        "type": "varchar",
+        "examples": [
+          "0115551001",
+          "0115551002",
+          "0115551003"
+        ]
+      },
+      "Address": {
+        "type": "text",
+        "examples": [
+          "دمشق",
+          "حلب",
+          "اللاذقية"
+        ]
+      },
+      "IsActive": {
+        "type": "boolean",
+        "examples": [
+          true,
+          false,
+          true
+        ]
+      }
+    }
+  },
+  {
+    "name": "OfficialCorrespondence",
+    "description": "المراسلات الرسمية الواردة والصادرة والداخلية.",
+    "hasExamples": true,
+    "columns": {
+      "ID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "ReferenceNumber": {
+        "type": "varchar",
+        "examples": [
+          "IN-2026-001",
+          "OUT-2026-002",
+          "INT-2026-003"
+        ]
+      },
+      "Type": {
+        "type": "varchar",
+        "examples": [
+          "إداري",
+          "مالي",
+          "وظيفي"
+        ]
+      },
+      "CorrespondenceDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "ReceivedOrSentDate": {
+        "type": "date",
+        "examples": [
+          "2026-01-15",
+          "2026-04-01",
+          "2026-09-20"
+        ]
+      },
+      "Subject": {
+        "type": "varchar",
+        "examples": [
+          "اجتماع تنسيقي",
+          "مهمة تفتيش",
+          "متابعة مشروع"
+        ]
+      },
+      "Content": {
+        "type": "tex",
+        "examples": [
+          "محتوى تجريبي أول",
+          "محتوى تجريبي ثان",
+          "محتوى تجريبي ثالث"
+        ]
+      },
+      "SenderExternalPartyID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "ReceiverExternalPartyID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "HandledByEmployeeID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "RelatedDecisionID": {
+        "type": "int",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "notes": {
+        "type": "varchar",
+        "examples": [
+          "قيمة 1",
+          "قيمة 2",
+          "قيمة 3"
+        ]
+      },
+      "AttachmentURL": {
+        "type": "varchar",
+        "examples": [
+          "/attachments/mail-001.pdf",
+          "/attachments/mail-002.pdf",
+          "/attachments/mail-003.pdf"
+        ]
+      },
+      "Priority": {
+        "type": "varchar",
+        "examples": [
+          "عادي",
+          "عاجل",
+          "مرتفع"
+        ]
+      },
+      "Status": {
+        "type": "varchar",
+        "examples": [
+          "مسودة",
+          "قيد الإجراء",
+          "معتمد"
+        ]
+      }
+    }
+  }
+];
+
+function showValue(value) {
+  if (value === null || value === undefined) return "NULL";
+  if (typeof value === "boolean") return value ? "true" : "false";
+  return String(value);
+}
+
+function createCard(def) {
+  const card = document.createElement("section");
+  card.className = "card";
+
+  const head = document.createElement("div");
+  head.className = "card-head";
+  head.innerHTML = `<h2>${def.name}</h2><p>${def.description}</p>`;
+  card.appendChild(head);
+
+  if (!def.hasExamples) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.innerHTML = `لا توجد أعمدة تفصيلية في المخطط الحالي لعرض أمثلة عليها.<br><span class="badge">ID = INT</span>`;
+    card.appendChild(empty);
+    return card;
+  }
+
+  const wrap = document.createElement("div");
+  wrap.className = "table-wrap";
+
+  const table = document.createElement("table");
+  table.innerHTML = `
+    <thead>
+      <tr>
+        <th>اسم العمود</th>
+        <th>النوع</th>
+        <th>مثال 1</th>
+        <th>مثال 2</th>
+        <th>مثال 3</th>
+      </tr>
+    </thead>
+  `;
+
+  const tbody = document.createElement("tbody");
+
+  Object.entries(def.columns).forEach(([columnName, columnDef]) => {
+    const row = document.createElement("tr");
+
+    const nameCell = document.createElement("td");
+    nameCell.className = "field";
+    nameCell.textContent = columnName;
+    row.appendChild(nameCell);
+
+    const typeCell = document.createElement("td");
+    typeCell.className = "type";
+    typeCell.textContent = columnDef.type;
+    row.appendChild(typeCell);
+
+    columnDef.examples.forEach(example => {
+      const td = document.createElement("td");
+      td.textContent = showValue(example);
+      row.appendChild(td);
+    });
+
+    tbody.appendChild(row);
+  });
+
+  table.appendChild(tbody);
+  wrap.appendChild(table);
+  card.appendChild(wrap);
+  return card;
+}
+
+const grid = document.getElementById("tablesGrid");
+schemaTables.forEach(def => grid.appendChild(createCard(def)));
+</script>
+</body>
+</html>
