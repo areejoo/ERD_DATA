@@ -31,45 +31,23 @@ th{background:#f8f9fa;font-weight:700}
 <div class="container">
 <header class="hero">
   <h1>أمثلة بيانات مخطط الموارد البشرية</h1>
-  <p>البيانات موجودة داخل مصفوفة JavaScript واحدة ويتم توليد جميع الجداول تلقائياً منها.</p>
-  <p>تم اعتبار كل حقل <b>ID / ...ID</b> من نوع <b>INT</b>. والجداول التي لا تحتوي حقولاً فعلية غير ID لا تعرض بيانات تجريبية.</p>
-</header>
+ </header>
 
 <main id="tablesGrid" class="grid"></main>
 </div>
 
 <script>
 const schemaTables = [
-  {
-    "name": "org_units",
-    "description": "الوحدات التنظيمية. المخطط الحالي لا يعرّف حقولاً تفصيلية لها غير المعرّف.",
-    "hasExamples": false,
-    "columns": {}
-  },
-  {
-    "name": "job_cards",
-    "description": "البطاقات الوظيفية. المخطط الحالي لا يعرّف حقولاً تفصيلية لها غير المعرّف.",
-    "hasExamples": false,
-    "columns": {}
-  },
-  {
-    "name": "Grades",
-    "description": "الفئات أو الدرجات الوظيفية. المخطط الحالي لا يعرّف حقولاً تفصيلية لها غير المعرّف.",
-    "hasExamples": false,
-    "columns": {}
-  },
-  {
-    "name": "vacancies",
-    "description": "الشواغر الوظيفية. المخطط الحالي لا يعرّف حقولاً تفصيلية لها غير المعرّف.",
-    "hasExamples": false,
-    "columns": {}
-  },
-  {
-    "name": "attachments",
-    "description": "المرفقات. المخطط الحالي لا يعرّف حقولاً تفصيلية لها غير المعرّف.",
-    "hasExamples": false,
-    "columns": {}
-  },
+ 
+  
+//   {
+//     "name": "Grades",
+//     "description": "الفئات أو الدرجات الوظيفية. المخطط الحالي لا يعرّف حقولاً تفصيلية لها غير المعرّف.",
+//     "hasExamples": false,
+//     "columns": {}
+//   },
+// ,
+ 
   {
     "name": "Employee",
     "description": "السجل الرئيسي للموظف وبياناته الشخصية والوظيفية.",
@@ -94,9 +72,9 @@ const schemaTables = [
       "NationalId": {
         "type": "int",
         "examples": [
-          1,
-          2,
-          3
+          "05010142555",
+          "05014474747",
+          "05098653255"
         ]
       },
       "PassportNumber": {
@@ -110,9 +88,9 @@ const schemaTables = [
       "FirstName": {
         "type": "varchar",
         "examples": [
-          "أحمد",
-          "ليلى",
-          "سامي"
+          "فوزية",
+          "افتكار",
+          "جعفر"
         ]
       },
       "MiddleName": {
@@ -134,15 +112,15 @@ const schemaTables = [
       "FullName": {
         "type": "varchar",
         "examples": [
-          "أحمد محمد العلي",
-          "ليلى خالد حمدان",
-          "سامي حسن سليمان"
+          "فوزية محمد العلي",
+          "افتكار خالد حمدان",
+          "جعفر حسن سليمان"
         ]
       },
       "Gender": {
         "type": "varchar",
         "examples": [
-          "ذكر",
+          "أنثى",
           "أنثى",
           "ذكر"
         ]
@@ -152,31 +130,31 @@ const schemaTables = [
         "examples": [
           1,
           2,
-          3
+          2
         ]
       },
       "NationalityId": {
         "type": "int",
         "examples": [
           1,
-          2,
-          3
+          1,
+          1
         ]
       },
       "BirthDate": {
         "type": "date",
         "examples": [
-          "2026-01-15",
-          "2026-04-01",
-          "2026-09-20"
+          "1990-01-15",
+          "1965-04-01",
+          "1999-09-20"
         ]
       },
       "HireDate": {
         "type": "date014",
         "examples": [
           "2026-01-15",
-          "2026-04-01",
-          "2026-09-20"
+          "2025-04-01",
+          "2000-09-20"
         ]
       },
       "EmploymentStatusId": {
@@ -184,7 +162,7 @@ const schemaTables = [
         "examples": [
           1,
           2,
-          3
+          1
         ]
       },
       "CurrentVacancynId": {
@@ -207,24 +185,24 @@ const schemaTables = [
         "type": "int",
         "examples": [
           1,
-          2,
+          3,
           3
         ]
       },
       "WorkEmail": {
         "type": "varchar",
         "examples": [
-          "ahmad@org.gov",
-          "laila@org.gov",
-          "sami@org.gov"
+          "aaaaa@org.gov",
+          "bbbbb@org.gov",
+          "ja3far@org.gov"
         ]
       },
       "WorkPhone": {
         "type": "varchar",
         "examples": [
-          "011-5551001",
-          "011-5551002",
-          "011-5551003"
+          "0904385258",
+          "0940525252",
+          "0943825498"
         ]
       },
       "PhotoAttachmentId": {
@@ -271,7 +249,7 @@ const schemaTables = [
   },
   {
     "name": "EmploymentStatus",
-    "description": "حالات الموظف وإعدادات تأثير كل حالة على الرواتب والصلاحيات والخدمة.",
+    "description": "حالات الموظف",
     "hasExamples": true,
     "columns": {
       "ID": {
@@ -374,22 +352,22 @@ const schemaTables = [
         "examples": [
           "08:00",
           "09:15",
-          "14:30"
+          "10:30"
         ]
       },
       "EndTime": {
         "type": "time",
         "examples": [
-          "08:00",
-          "09:15",
-          "14:30"
+          "15:00",
+          "15:15",
+          "15:30"
         ]
       },
       "IsLate": {
         "type": "boolean",
         "examples": [
-          true,
           false,
+          true,
           true
         ]
       },
@@ -404,7 +382,7 @@ const schemaTables = [
       "IsManualEntry": {
         "type": "boolean",
         "examples": [
-          true,
+          false,
           false,
           true
         ]
@@ -484,8 +462,8 @@ const schemaTables = [
         "type": "int",
         "examples": [
           1,
-          2,
-          3
+          21,
+          2
         ]
       },
       "IsDeductedFromSalary": {
@@ -516,7 +494,7 @@ const schemaTables = [
   },
   {
     "name": "LeaveType",
-    "description": "أنواع الإجازات وخصائصها مثل الأجر واشتراط الوثائق.",
+    "description": "أنواع الإجازات وخصائصها مثل اجازة بلا اجر اوصحية  واشتراط الوثائق التي يجب ان يتضمنها للموافقى على الاجازة",
     "hasExamples": true,
     "columns": {
       "ID": {
@@ -530,9 +508,9 @@ const schemaTables = [
       "Name": {
         "type": "varchar",
         "examples": [
-          "نشط",
+          "اجازة صحية",
           "إجازة بدون راتب",
-          "مستقيل"
+          "اجازة امومة"
         ]
       },
       "RequiresDocument": {
@@ -546,9 +524,9 @@ const schemaTables = [
       "IsPaid": {
         "type": "int",
         "examples": [
-          1,
-          2,
-          3
+          true,
+          false,
+          true
         ]
       }
     }
