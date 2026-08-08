@@ -1,0 +1,1195 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Database Schema Examples</title>
+  <style>
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: #f4f6f8;
+      color: #17202a;
+      font-family: Tahoma, Arial, sans-serif
+    }
+
+    .container {
+      max-width: 1500px;
+      margin: auto;
+      padding: 36px
+    }
+
+    .hero {
+      background: #fff;
+      border: 1px solid #e3e7eb;
+      border-radius: 16px;
+      padding: 26px 30px;
+      margin-bottom: 26px
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 28px
+    }
+
+    .hero p {
+      margin: 6px 0;
+      color: #59636e;
+      line-height: 1.8
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+      gap: 22px;
+      align-items: start
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #dde2e7;
+      border-radius: 14px;
+      overflow: hidden;
+      break-inside: avoid
+    }
+
+    .card-head {
+      padding: 18px 20px;
+      border-bottom: 1px solid #e8ebee
+    }
+
+    .card-head h2 {
+      direction: ltr;
+      text-align: left;
+      margin: 0 0 7px;
+      font-size: 19px
+    }
+
+    .card-head p {
+      margin: 0;
+      color: #66717c;
+      font-size: 13px;
+      line-height: 1.7
+    }
+
+    .table-wrap {
+      overflow-x: auto
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      direction: ltr;
+      text-align: left;
+      font-size: 12px
+    }
+
+    th,
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #edf0f2;
+      white-space: nowrap
+    }
+
+    th {
+      background: #f8f9fa;
+      font-weight: 700
+    }
+
+    .field {
+      font-weight: 700;
+      background: #fbfcfd
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0
+    }
+
+    .note {
+      font-size: 12px;
+      color: #737e88;
+      margin-top: 14px
+    }
+
+    @media(max-width:700px) {
+      .container {
+        padding: 16px
+      }
+
+      .grid {
+        grid-template-columns: 1fr
+      }
+
+      .card {
+        min-width: 0
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff
+      }
+
+      .container {
+        max-width: none;
+        padding: 10px
+      }
+
+      .grid {
+        display: block
+      }
+
+      .card {
+        margin-bottom: 18px;
+        page-break-inside: avoid
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="hero">
+      <h1>أمثلة بيانات مخطط قاعدة البيانات لمديرية التنظيم المؤسساتي</h1>
+
+    </header>
+
+    <main id="tablesGrid" class="grid"></main>
+
+  </div>
+
+  <script>
+    const schemaTables = [
+      {
+        "name": "task_types",
+        "description": "أنواع المهام المستخدمة لتصنيف مهام البطاقات الوظيفية.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "code": [
+            "PRIMARY",
+            "SUPPORT",
+            "SUPERVISORY"
+          ],
+          "name_ar": [
+            "مهام رئيسية",
+            "مهام مساندة",
+            "مهام إشرافية"
+          ],
+          "name_en": [
+            "Primary Tasks",
+            "Supporting Tasks",
+            "Supervisory Tasks"
+          ],
+          "is_active": [
+            true,
+            true,
+            true
+          ]
+        }
+      },
+      {
+        "name": "job_categories",
+        "description": "تصنيفات الوظائف.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "code": [
+            "",
+            "",
+            ""
+          ],
+          "name_ar": [
+            "ادارة وسطى",
+            "مراقب أشغال",
+            "ادارة عليا"
+          ],
+          "name_en": [
+            "",
+            "",
+            ""
+          ],
+          "is_active": [
+            true,
+            true,
+            true
+          ]
+        }
+      },
+      {
+        "name": "job_definitions",
+        "description": "التعريف الأساسي للممسيات الوظفييةم.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "code": [
+            "JOB-001",
+            "JOB-002",
+            "JOB-003"
+          ],
+          "name_ar": [
+            "مدير الموارد البشرية",
+            "أخصائي موارد بشرية",
+            "محلل موارد بشرية"
+          ],
+          "name_en": [
+            "HR Director",
+            "HR Specialist",
+            "HR Analyst"
+          ],
+          "is_active": [
+            true,
+            true,
+            true
+          ]
+        }
+      },
+      {
+        "name": "career_tracks",
+        "description": "المسارات المهنية التي تصنف تطور الوظائف.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "code": [
+            "MGMT",
+            "PROF",
+            "TECH"
+          ],
+          "name_ar": [
+            "المسار الإداري",
+            "المسار التخصصي",
+            "المسار التقني"
+          ],
+          "name_en": [
+            "Management",
+            "Professional",
+            "Technical"
+          ],
+          "is_active": [
+            true,
+            true,
+            true
+          ]
+        }
+      },
+      {
+        "name": "qualifications",
+        "description": "المؤهلات العلمية التي يمكن ربطها بالوظائف.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "code": [
+            "DIPLOMA",
+            "BACHELOR",
+            "MASTER"
+          ],
+          "name_ar": [
+            "هندسة مدني",
+            "ماستر في الادارة",
+            "معهد حاسوب"
+          ],
+          "name_en": [
+            "Diploma",
+            "Bachelor",
+            "Master"
+          ],
+          "level": [
+            5,
+            6,
+            7
+          ],
+          "is_active": [
+            true,
+            true,
+            true
+          ]
+        }
+      },
+      {
+        "name": "job_groups",
+        "description": "مجموعات تستخدم لتجميع الوظائف حسب طبيعتها أو مستواها.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "code": [
+            "EXEC",
+            "SPEC",
+            "ADMIN"
+          ],
+          "name_ar": [
+            "الوظائف القيادية",
+            "الوظائف التخصصية",
+            "الوظائف الإدارية"
+          ],
+          "name_en": [
+            "Executive Jobs",
+            "Specialist Jobs",
+            "Administrative Jobs"
+          ],
+          "description": [
+            "وظائف الإدارة العليا",
+            "وظائف تتطلب تخصصاً مهنياً",
+            "وظائف الدعم الإداري"
+          ],
+          "is_active": [
+            true,
+            true,
+            true
+          ]
+        }
+      },
+      {
+        "name": "org_units",
+        "description": "الوحدات التنظيمية الهرمية مثل الإدارات والأقسام.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "code": [
+            "MUN",
+            "HR",
+            "RECRUIT"
+          ],
+          "name_ar": [
+            "رئاسة المجلس",
+            "مديريةة التنمية الادارية",
+            "دائرة شؤون العاملين"
+          ],
+          "name_en": [
+            "",
+            "H",
+            ""
+          ],
+          "description": [
+            "الوحدة التنظيمية الرئيسية",
+            "إدارة الموارد البشرية",
+            "قسم مسؤول عن بيانات العاميلن..."
+          ],
+          "parent_unit_id": [
+            null,
+            1,
+            2
+          ],
+          "node_type": [
+            "رئيس مجلس",
+            "مديرية",
+            "دائرة"
+          ],
+          "is_active": [
+            true,
+            true,
+            true
+          ]
+        }
+      },
+      {
+        "name": "org_structures",
+        "description": "إصدارات الهياكل التنظيمية وحالة اعتماد كل إصدار.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "name_ar": [
+            "الهيكل التنظيمي 2025",
+            "الهيكل التنظيمي 2026",
+            "تحديث الهيكل 2026"
+          ],
+          "name_en": [
+            "Org Structure 2025",
+            "Org Structure 2026",
+            "Org Structure Update"
+          ],
+          "version": [
+            "1.0",
+            "2.0",
+            "2.1"
+          ],
+          "status": [
+            "EXPIRED",
+            "APPROVED",
+            "IN_REVIEW"
+          ],
+          "description": [
+            "الإصدار السابق",
+            "الإصدار الحالي",
+            " ممكن يجهزو تحديث مقترح للسنة الجاية"
+          ],
+          "effective_date": [
+            "2025-01-01",
+            "2026-01-01",
+            "2026-09-01"
+          ],
+          "expiry_date": [
+            "2025-12-31",
+            "2026-12-31",
+            "2027-12-31"
+          ],
+          "current_approval_instance_id": [
+            1,
+            2,
+            3
+          ],
+          "approved_at": [
+            "2024-12-20",
+            "2025-12-20",
+            null
+          ],
+          "approved_by": [
+            3,
+            3,
+            null
+          ]
+        }
+      },
+      {
+        "name": "job_structures",
+        "description": "إصدارات هيكل الوظائف  موضح في الصورة المرسلة عبر الواتساب.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "name_ar": [
+            "هيكل الوظائف 2025",
+            "هيكل الوظائف 2026",
+            "تحديث هيكل الوظائف"
+          ],
+          "name_en": [
+            "Job Structure 2025",
+            "Job Structure 2026",
+            "Job Structure Update"
+          ],
+          "version": [
+            "1.0",
+            "2.0",
+            "2.1"
+          ],
+          "status": [
+            "EXPIRED",
+            "APPROVED",
+            "IN_REVIEW"
+          ],
+          "description": [
+            "الإصدار السابق",
+            "الإصدار الحالي",
+            "تحديث مقترح"
+          ],
+          "effective_date": [
+            "2025-01-01",
+            "2026-01-01",
+            "2026-09-01"
+          ],
+          "expiry_date": [
+            "2025-12-31",
+            "2026-12-31",
+            "2027-12-31"
+          ],
+          "current_approval_instance_id": [
+            1,
+            2,
+            3
+          ],
+          "approved_at": [
+            "2024-12-22",
+            "2025-12-22",
+            null
+          ],
+          "approved_by": [
+            3,
+            3,
+            null
+          ]
+        }
+      },
+      {
+        "name": "job_structure_org_structure",
+        "description": "جدول ربط بين إصدارات هيكل الوظائف وإصدارات الهيكل التنظيمي.",
+        "columns": {
+          "job_structure_id": [
+            1,
+            2,
+            3
+          ],
+          "org_structure_id": [
+            1,
+            2,
+            3
+          ],
+          "linked_at": [
+            "2025-01-01 09:00",
+            "2026-01-01 09:00",
+            "2026-09-01 09:00"
+          ],
+          "linked_by": [
+            1,
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "name": "job_structure_entries",
+        "description": "الوظائف الموجودة داخل كل إصدار من هيكل الوظائف وتسلسلها.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "job_structure_id": [
+            2,
+            2,
+            2
+          ],
+          "job_definition_id": [
+            1,
+            2,
+            3
+          ],
+          "parent_entry_id": [
+            null,
+            1,
+            1
+          ],
+          "job_group_id": [
+            1,
+            2,
+            2
+          ],
+          "career_track_id": [
+            1,
+            2,
+            2
+          ],
+          "max_headcount": [
+            1,
+            5,
+            3
+          ],
+          "current_active_vacancies": [
+            0,
+            2,
+            1
+          ],
+          "sort_order": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "name": "job_entry_qualifications",
+        "description": "يربط وظائف الهيكل بالمؤهلات المطلوبة  لان الوظيفة الوحدة قد تحتاج شهادة او اكثر .",
+        "columns": {
+          "job_entry_id": [
+            1,
+            2,
+            3
+          ],
+          "qualification_id": [
+            3,
+            2,
+            2
+          ],
+          "is_preferred": [
+            true,
+            false,
+            true
+          ]
+        }
+      },
+      {
+        "name": "job_cards",
+        "description": "البطاقة التفصيلية للوظيفة وربطها بالوحدة والتصنيف في جدول  job_categories.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "job_definition_id": [
+            1,
+            2,
+            3
+          ],
+          "org_unit_id": [
+            2,
+            2,
+            3
+          ],
+          "job_id": [
+            1,
+            2,
+            3
+          ],
+           "job_id": [
+            1,
+            2,
+            3
+          ],
+          "direct_manager_job_id": [
+            null,
+            1,
+            1
+          ],
+          "deputy_job_id": [
+            2,
+            3,
+            null
+          ],
+          "category_id": [
+            1,
+            2,
+            2
+          ],
+          "status": [
+            "APPROVED",
+            "APPROVED",
+            "IN_REVIEW"
+          ],
+          "current_approval_instance_id": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "name": "job_card_tasks",
+        "description": "المهام الفعلية المدرجة داخل كل بطاقة وظيفية.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "job_card_id": [
+            1,
+            2,
+            3
+          ],
+          "task_type_id": [
+            3,
+            1,
+            2
+          ],
+          "description": [
+            "الإشراف على استراتيجية الموارد البشرية",
+            "إعداد تقارير التوظيف",
+            "تحليل مؤشرات الموارد البشرية"
+          ],
+          "sort_order": [
+            1,
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "name": "vacancy_type",
+        "description": "أنواع الشواغر مثل شاغر من اصل  الهيكل الوظيفي او شاغر محدث حكما يعني متل لما الوزارة بتفرز المهندسين وترسل الى الجهات العامة .",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "code": [
+            "Base",
+            "",
+            "New"
+          ],
+          "name_ar": [
+            "شاغر وظيفي",
+            " ",
+            "شاغر محدث حكما"
+          ],
+          "name_en": [
+            "Base Position",
+            "",
+            "New Vacancy"
+          ],
+          "is_active": [
+            true,
+            true,
+            true
+          ]
+        }
+      },
+      {
+        "name": "vacancies",
+        "description": "الشواغر الفردية وحالتها والوظيفة المرتبطة بها.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "job_definition_id": [
+            2,
+            3,
+            null
+          ],
+          "vacancy_code": [
+            "VAC-2026-001",
+            "VAC-2026-002",
+            "VAC-2026-003"
+          ],
+          "status": [
+            "VACANT",
+            "OCCUPIED",
+            "FROZEN"
+          ],
+          "vacancy_type_id": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "name": "templates",
+        "description":  "قوالب تستخدم في إنشاء طلبات الشواغر والمراسلات ستوضح لاحقا",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "name": "vacancy_requests",
+        "description": "طلبات إحداث أو إلغاء الشواغر ومصدر الطلب وحالته. وهو جدول الاب ولديه ابناء",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "origin_type": [
+            "MINISTRY_DECREE",
+            "INTERNAL_REQUEST",
+            "INTERNAL_REQUEST"
+          ],
+          "template_id": [
+            1,
+            2,
+            3
+          ],
+          "title": [
+            "طلب إحداث وظائف",
+            "طلب إلغاء شاغر",
+            "طلب طي شاغر"
+          ],
+          "header_content": [
+            "قرار وزاري رقم 101",
+            "إلى إدارة الموارد البشرية",
+            "إلى لجنة الوظائف"
+          ],
+          "body_content": [
+            "إحداث ثلاثة شواغر جديدة",
+            "إلغاء الشاغر المجمد",
+            "طلب إحلال موظف متقاعد"
+          ],
+          "footer_content": [
+            "مع التحية",
+            "وتفضلوا بقبول الاحترام",
+            "مع الشكر"
+          ],
+          "status": [
+            "APPROVED",
+            "PENDING",
+            "REJECTED"
+          ],
+          "attachment_id": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "name": "vacancy_request_details",
+        "description": " ممكن ان يقوم المدير بطلب فتح شاغر فهذا سيحوي تفاصيل الوظائف أو الشواغر المشمولة داخل كل طلب.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "request_id": [
+            1,
+            2,
+            3
+          ],
+          "vacancy_id": [
+            null,
+            3,
+            2
+          ],
+          "job_definition_id": [
+            2,
+            null,
+            3
+          ]
+        }
+      },
+      {
+        "name": "attachments",
+        "description": " Polymorphic Association المرفقات المركزية المرتبطة بكيانات النظام تم التفكير به بطريقة ان يكون جدول عام للكل وهو مايسمى ب ",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "entity_type": [
+            "vacancy_request",
+            "لاحقا رح يصير جدول اسمه تعميم ",
+            ""
+          ],
+          "entity_id": [
+            1,
+            2,
+
+          ],
+          "file_name": [
+            "قرار_إحداث.pdf",
+            "'طي شاغر'.pdf",
+            ""
+          ],
+          "file_path": [
+            "/docs/decision-101.pdf",
+            "/docs/cancel-002.pdf",
+            "f"
+          ],
+          "file_size_kb": [
+            845,
+            420,
+            610
+          ],
+          "mime_type": [
+            "application/pdf",
+            "application/pdf",
+            "application/pdf"
+          ],
+          "uploaded_at": [
+            "2026-03-01 10:30",
+            "2026-03-05 11:00",
+            "2026-03-08 09:15"
+          ],
+          "uploaded_by": [
+            2,
+            2,
+            1
+          ],
+          "doc_number": [
+            101,
+            102,
+            103
+          ],
+          "doc_date": [
+            "2026-02-28",
+            "2026-03-04",
+            "2026-03-07"
+          ]
+        }
+      },
+      {
+        "name": "workflow_rules",
+        "description": "قواعد وخطوات مسار الموافقة حسب نوع الكيان والدور المطلوب.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "entity_type": [
+            "vacancy_request",
+            "لاحقا رح يصير جدول اسمه تعميم ",
+            "اجازة مثلا جدول بكون"],
+          "step_order": [
+            1,
+            2,
+            1
+          ],
+          "role_code": [
+            "HR_OFFICER",
+            "HR_MANAGER",
+            "CITY_MANAGER"
+          ],
+          "step_name": [
+            "مراجعة الطلب",
+            "اعتماد الموارد البشرية",
+            "اعتماد التعميم"
+          ]
+        }
+      },
+      {
+        "name": "approval_instances",
+        "description": "نسخة تنفيذية لمسار موافقة خاص بكيان/جدول محدد يتطلب يعني موافقات",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "entity_type": [
+            "vacancy_request",
+            "vacancy_request",
+            "ORG_STRUCTURE"
+          ],
+          "entity_id": [
+            1,
+            2,
+            2
+          ],
+          "status": [
+            "Approved",
+            "Approved",
+            "REJECTED"
+          ],
+          "current_step": [
+            3,
+            2,
+            2
+          ],
+          "started_at": [
+            "2026-03-01 09:00",
+            "2026-03-05 09:30",
+            "2026-03-07 08:45"
+          ],
+          "completed_at": [
+            "2026-03-03 14:00",
+            null,
+            "2026-03-08 12:00"
+          ]
+        }
+      },
+      {
+        "name": "approval_instance_steps",
+        "description": "تفاصيل كل خطوة ضمن نسخة الموافقة وحالتها ومن نفذها.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "approval_instance_id": [
+            1,
+            1,
+            2
+          ],
+          "step_order": [
+            1,
+            2,
+            1
+          ],
+          "role_code": [
+            "HR_OFFICER",
+            "HR_MANAGER",
+            "HR_OFFICER"
+          ],
+          "status": [
+            "APPROVED",
+            "APPROVED",
+            "PENDING"
+          ],
+          "action_by": [
+            4,
+            5,
+            null
+          ],
+          "action_at": [
+            "2026-03-01 12:00",
+            "2026-03-02 15:30",
+            null
+          ]
+        }
+      },
+      {
+        "name": "users",
+        "description": "المستخدمون المسجلون في النظام. ومافي داعي لشرح الاعمدة.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "name": "roles",
+        "description": "الأدوار التي يمكن إسنادها للمستخدمين.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "role_code": [
+            "CITY_MANAGER",
+            "HR_MANAGER",
+            "HR_OFFICER"
+          ],
+          "role_name": [
+            "مدير الأمانة",
+            "مدير الموارد البشرية",
+            "مسؤول الموارد البشرية"
+          ]
+        }
+      },
+      {
+        "name": "permissions",
+        "description": "الصلاحيات والعمليات التي يمكن منحها للأدوار.",
+        "columns": {
+          "id": [
+            1,
+            2,
+            3
+          ],
+          "permission_code": [
+            "CAN_APPROVE_VACANCY",
+            "CAN_MANAGE_JOB_STRUCTURE",
+            "CAN_REVIEW_REQUEST"
+          ],
+          "description": [
+            "اعتماد طلبات الشواغر",
+            "إدارة هيكل الوظائف",
+            "مراجعة الطلبات"
+          ]
+        }
+      },
+      {
+        "name": "role_permissions",
+        "description": "جدول وسيط يربط الأدوار بالصلاحيات.",
+        "columns": {
+          "role_id": [
+            1,
+            2,
+            3
+          ],
+          "permission_id": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "name": "user_roles",
+        "description": "جدول وسيط يربط المستخدمين بالأدوار.",
+        "columns": {
+          "user_id": [
+            1,
+            2,
+            3
+          ],
+          "role_id": [
+            1,
+            2,
+            3
+          ]
+        }
+      }
+    ];
+
+    function displayValue(value) {
+      if (value === null || value === undefined) return "NULL";
+      if (typeof value === "boolean") return value ? "true" : "false";
+      return String(value);
+    }
+
+    function createTableCard(tableDef) {
+      const section = document.createElement("section");
+      section.className = "card";
+
+      const header = document.createElement("div");
+      header.className = "card-head";
+
+      const title = document.createElement("h2");
+      title.textContent = tableDef.name;
+
+      const description = document.createElement("p");
+      description.textContent = tableDef.description;
+
+      header.append(title, description);
+
+      const tableWrap = document.createElement("div");
+      tableWrap.className = "table-wrap";
+
+      const table = document.createElement("table");
+      table.innerHTML = `
+    <thead>
+      <tr>
+        <th>اسم العمود</th>
+        <th>مثال 1</th>
+        <th>مثال 2</th>
+        <th>مثال 3</th>
+      </tr>
+    </thead>
+  `;
+
+      const tbody = document.createElement("tbody");
+
+      Object.entries(tableDef.columns).forEach(([columnName, examples]) => {
+        const row = document.createElement("tr");
+
+        const nameCell = document.createElement("td");
+        nameCell.className = "field";
+        nameCell.textContent = columnName;
+        row.appendChild(nameCell);
+
+        examples.forEach(value => {
+          const cell = document.createElement("td");
+          cell.textContent = displayValue(value);
+          row.appendChild(cell);
+        });
+
+        tbody.appendChild(row);
+      });
+
+      table.appendChild(tbody);
+      tableWrap.appendChild(table);
+      section.append(header, tableWrap);
+
+      return section;
+    }
+
+    const grid = document.getElementById("tablesGrid");
+    schemaTables.forEach(tableDef => {
+      grid.appendChild(createTableCard(tableDef));
+    });
+  </script>
+</body>
+
+</html>
