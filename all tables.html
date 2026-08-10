@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Database Schema Examples</title>
+  <title>Combined Database Schema Examples</title>
   <style>
     * {
       box-sizing: border-box
@@ -154,7 +154,7 @@
 <body>
   <div class="container">
     <header class="hero">
-      <h1>أمثلة بيانات مخطط قاعدة البيانات لمديرية التنظيم المؤسساتي</h1>
+      <h1>أمثلة بيانات مخطط قاعدة البيانات المدمجة</h1>
 
     </header>
 
@@ -164,7 +164,7 @@
 
   <script>
     const schemaTables = [
-      {
+{
         "name": "task_types",
         "description": "أنواع المهام المستخدمة لتصنيف مهام البطاقات الوظيفية.",
         "columns": {
@@ -1157,8 +1157,480 @@
             3
           ]
         }
-      }
-    ];
+      },
+{
+    "name": "training_categories",
+    "description": "تصنيفات الدورات التدريبية.",
+    "columns": {
+      "id": [
+        1,
+        2,
+        3
+      ],
+      "name_ar": [
+        "إدارة وقيادة",
+        "تقنية معلومات",
+        "اساسيات الشبكة "
+      ],
+      "name_en": [
+        "Management",
+        "Information Technology",
+        "networks"
+      ],
+      "is_active": [
+        true,
+        true,
+        true
+      ]
+    }
+  },
+ 
+ 
+  {
+    "name": "training_centers",
+    "description": "مراكز التدريب الخارجية أو المعتمدة.",
+    "columns": {
+      "id": [
+        1,
+        2,
+        3
+      ],
+      "name_ar": [
+        "مركز التطوير الإداري",
+        "أكاديمية التفوق",
+        "مركز الايمن "
+      ],
+      "name_en": [
+        "Management Development Center",
+        "Tech Academy",
+        "Safety Training Center"
+      ],
+      "address": [
+        "دمشق - المزة",
+        "دمشق - البرامكة",
+        "ريف دمشق - قدسيا"
+      ],
+      "contact_number": [
+        "092525258",
+        "094252525",
+        "0942585854"
+      ],
+      "manager_name": [
+        "أحمد خليل",
+        "سارة علي",
+        "مازن حسن"
+      ],
+      "is_active": [
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  {
+    "name": "training_plans",
+    "description": "الخطط التدريبية السنوية والميزانيات المرتبطة بها.",
+    "columns": {
+      "id": [
+        1,
+        2,
+        3
+      ],
+      "plan_number": [
+        "TP-2026-001",
+        "TP-2026-002",
+        "TP-2027-001"
+      ],
+      "financial_year": [
+        2026,
+        2026,
+        2027
+      ],
+      "total_budget": [
+        25000000,
+        18000000,
+        30000000
+      ],
+      "status": [
+        "APPROVED",
+        "IN_PROGRESS",
+        "DRAFT"
+      ],
+      "is_active": [
+        true,
+        true,
+        true
+      ]
+    }
+  },
+ 
+  {
+    "name": "training_courses",
+    "description": "الدورات التدريبية المخططة والمنفذة ضمن الخطط.",
+    "columns": {
+      "id": [
+        1,
+        2,
+        3
+      ],
+      "plan_id": [
+        1,
+        1,
+        2
+      ],
+      "category_id": [
+        1,
+        2,
+        3
+      ],
+      "center_id": [
+        1,
+        2,
+        3
+      ],
+      "title": [
+        "مهارات القيادة الإدارية",
+        "أمن المعلومات",
+        "السلامة في بيئة الشبكة "
+      ],
+      "description": [
+        "تطوير مهارات القيادة واتخاذ القرار",
+        "أساسيات حماية البيانات والأنظمة",
+        "رفع الوعي بإجراءات السلامة الشبكية"
+      ],
+      "target_department": [
+        2,
+        3,
+        4
+      ],
+      "start_date": [
+        "2026-03-10",
+        "2026-05-15",
+        "2026-07-01"
+      ],
+      "duration_days": [
+        5,
+        3,
+        2
+      ],
+      "status": [
+        "PLANNED",
+        "OPEN",
+        "COMPLETED"
+      ],
+      "is_internal": [
+        false,
+        false,
+        true
+      ],
+      "max_seats": [
+        25,
+        20,
+        30
+      ],
+      "coach_name": [
+        "د. خالد منصور",
+        "م. ريم يوسف",
+        "أ. سامر أحمد"
+      ],
+      "occupied_seats": [
+        18,
+        12,
+        30
+      ],
+      "is_active": [
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  {
+    "name": "quotations",
+    "description": "العروض المقدمة من مراكز التدريب لكل دورة.",
+    "columns": {
+      "id": [
+        1,
+        2,
+        3
+      ],
+      "course_id": [
+        1,
+        1,
+        2
+      ],
+      "center_id": [
+        1,
+        2,
+        2
+      ],
+      "cost_per_person": [
+        350000,
+        325000,
+        420000
+      ],
+      "benefits": [
+        "حقيبة تدريبية + شهادة",
+        "شهادة + ضيافة",
+        "مختبر عملي + شهادة"
+      ],
+      "proposed_dates": [
+        "10-14 مارس 2026",
+        "17-21 مارس 2026",
+        "15-17 مايو 2026"
+      ],
+      "status": [
+        "REJECTED",
+        "SELECTED",
+        "REJECTED"
+      ]
+    }
+  },
+  {
+    "name": "committees",
+    "description": "اللجان المشكلة لتقييم العروض أو تنفيذ مهام تدريبية.",
+    "columns": {
+      "id": [
+        1,
+        2,
+        3
+      ],
+      "name": [
+        "لجنة تقييم عروض التدريب",
+        "لجنة الخطة التدريبية",
+        "لجنة اعتمادالمراكز "
+      ],
+      "description": [
+        "مقارنة عروض المراكز التدريبية",
+        "مراجعة واعتماد الخطة السنوية",
+        "تقييم واعتماد مراكز التدريب"
+      ],
+      "status": [
+        "ACTIVE",
+        "COMPLETED",
+        "DRAFT"
+      ],
+      "current_approval_instance_id": [
+        1,
+        2,
+        3
+      ],
+      "tasks": [
+        "تقييم الأسعار والمزايا",
+        "مراجعة الاحتياجات التدريبية",
+        "تقييم جودة المراكز"
+      ],
+      "is_active": [
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  {
+    "name": "committee_members",
+    "description": "أعضاء اللجان وأدوارهم داخل كل لجنة.",
+    "columns": {
+      "committee_id": [
+        1,
+        1,
+        2
+      ],
+      "user_id": [
+        10,
+        11,
+        12
+      ],
+      "role_type": [
+        "manager",
+        "MEMBER",
+        "MEMBER"
+      ],
+      "assigned_at": [
+        "2026-01-10 09:00",
+        "2026-01-10 09:05",
+        "2026-02-01 10:00"
+      ]
+    }
+  },
+  {
+    "name": "committee_votes",
+    "description": "نقاط تصويت أعضاء اللجان على عروض التدريب.",
+    "columns": {
+      "id": [
+        1,
+        2,
+        3
+      ],
+      "committee_id": [
+        1,
+        1,
+        1
+      ],
+      "quote_id": [
+        1,
+        2,
+        3
+      ],
+      "points": [
+        85,
+        92,
+        70
+      ],
+      "member_id": [
+        10,
+        11,
+        12
+      ]
+    }
+  },
+
+  {
+    "name": "course_registrations",
+    "description": "تسجيل الموظفين في الدورات التدريبية.",
+    "columns": {
+      "id": [
+        1,
+        2,
+        3
+      ],
+      "course_id": [
+        1,
+        1,
+        2
+      ],
+      "employee_id": [
+        101,
+        102,
+        103
+      ],
+      "registration_date": [
+        "2026-02-20 09:00",
+        "2026-02-21 10:30",
+        "2026-05-01 11:00"
+      ],
+      "status": [
+        "REGISTERED",
+        "ATTENDED",
+        "COMPLETED"
+      ],
+      "pledge_accepted": [
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  {
+    "name": "evaluations",
+    "description": "تقييم الموظف للدورة والمركز والمدرب.",
+    "columns": {
+      "id": [
+        1,
+        2,
+        3
+      ],
+      "registration_id": [
+        1,
+        2,
+        3
+      ],
+      "course_rating": [
+        5,
+        4,
+        5
+      ],
+      "center_rating": [
+        4,
+        4,
+        5
+      ],
+      "trainer_rating": [
+        5,
+        5,
+        4
+      ]
+    }
+  },
+  {
+    "name": "course_target_org_unit",
+    "description": "ربط الدورات التدريبية بالوحدات التنظيمية المستهدفة.",
+    "columns": {
+      "course_id": [
+        1,
+        1,
+        2
+      ],
+      "org_unit_id": [
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "name": "training_sessions",
+    "description": "الجلسات اليومية أو الزمنية لكل دورة تدريبية.",
+    "columns": {
+      "id": [
+        1,
+        2,
+        3
+      ],
+      "course_id": [
+        1,
+        1,
+        2
+      ],
+      "start_time_seation": [
+        "2026-03-10 09:00",
+        "2026-03-11 09:00",
+        "2026-05-15 10:00"
+      ],
+      "end_time_seation": [
+        "2026-03-10 13:00",
+        "2026-03-11 13:00",
+        "2026-05-15 14:00"
+      ],
+      "session_date": [
+        "2026-03-10 00:00",
+        "2026-03-11 00:00",
+        "2026-05-15 00:00"
+      ],
+      "location": [
+        "قاعة 1",
+        "قاعة 1",
+        "مختبر التدريب"
+      ]
+    }
+  },
+  {
+    "name": "employee_certificates",
+    "description": "الشهادات الصادرة للموظفين بعد إتمام الدورات.",
+    "columns": {
+      "id": [
+        1,
+        2,
+        3
+      ],
+      "registration_id": [
+        1,
+        2,
+        3
+      ],
+      "attachment_id": [
+        201,
+        202,
+        203
+      ],
+      "issue_date": [
+        "2026-03-15",
+        "2026-03-15",
+        "2026-05-18"
+      ]
+    }
+  }
+];
 
     function displayValue(value) {
       if (value === null || value === undefined) return "NULL";
